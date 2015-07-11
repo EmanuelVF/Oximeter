@@ -1,0 +1,4 @@
+Record=TopLevelDocument|FileName=Main.SchDoc
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=Acquisition_module|SchDesignator=Acquisition_module|FileName=Acquisition_module.SchDoc|SymbolType=Normal|RawFileName=Acquisition_module.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=Control_module|SchDesignator=Control_module|FileName=Control_module.SchDoc|SymbolType=Normal|RawFileName=Control_module.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 
+Record=SheetSymbol|Record=SheetSymbol|SourceDocument=Main.SchDoc|Designator=Power_module|SchDesignator=Power_module|FileName=Power_module.SchDoc|SymbolType=Normal|RawFileName=Power_module.SchDoc|DesignItemId= |SourceLibraryName= |ObjectKind=Sheet Symbol|RevisionGUID= |ItemGUID= |VaultGUID= 

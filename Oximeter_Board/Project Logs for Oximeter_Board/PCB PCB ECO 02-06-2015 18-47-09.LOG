@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=K22_AFE_RESETZ Pin=U2-44
+Removed Pin From Net: NetName=K22_AFE_RDY Pin=U2-45
+Removed Pin From Net: NetName=K22_DIAG_END Pin=U2-54
+Removed Pin From Net: NetName=K22_LED_ALM Pin=U2-55
+Removed Pin From Net: NetName=K22_PD_ALM Pin=U2-56
+Added Pin To Net: NetName=K22_AFE_RESETZ Pin=U2-52
+Added Pin To Net: NetName=K22_AFE_RDY Pin=U2-54
+Added Pin To Net: NetName=K22_PD_ALM Pin=U2-61
+Added Pin To Net: NetName=K22_LED_ALM Pin=U2-62
+Added Pin To Net: NetName=K22_DIAG_END Pin=U2-63
+Added Pin To Net: NetName=NetR6_1 Pin=R6-1
+Added Pin To Net: NetName=NetR6_1 Pin=U2-64
+Added Net: Name=NetR6_1
+Added Pin To Net: NetName=NetR7_1 Pin=R7-1
+Added Pin To Net: NetName=NetR7_1 Pin=U2-49
+Added Net: Name=NetR7_1

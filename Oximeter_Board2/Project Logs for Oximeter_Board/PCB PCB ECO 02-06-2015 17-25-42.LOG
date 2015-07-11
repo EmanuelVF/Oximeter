@@ -1,0 +1,52 @@
+Added Component: Designator=U1(AFE4490QFN50P680X680X100_HS-41N)
+Added Pin To Net: NetName=GND Pin=U1-3
+Added Pin To Net: NetName=NetR2_2 Pin=U1-4
+Added Pin To Net: NetName=AFE_BG Pin=U1-7
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=AFE_TX_REF Pin=U1-9
+Added Pin To Net: NetName=LVDD Pin=U1-11
+Added Pin To Net: NetName=GND Pin=U1-12
+Added Pin To Net: NetName=GND Pin=U1-13
+Added Pin To Net: NetName=GND Pin=U1-16
+Added Pin To Net: NetName=LVDD Pin=U1-17
+Added Pin To Net: NetName=LVDD Pin=U1-18
+Added Pin To Net: NetName=GND Pin=U1-19
+Added Pin To Net: NetName=K22_DIAG_END Pin=U1-21
+Added Pin To Net: NetName=K22_LED_ALM Pin=U1-22
+Added Pin To Net: NetName=K22_PD_ALM Pin=U1-23
+Added Pin To Net: NetName=K22_SPI_CLK Pin=U1-24
+Added Pin To Net: NetName=K22_SPI_MISO Pin=U1-25
+Added Pin To Net: NetName=K22_SPI_MOSI Pin=U1-26
+Added Pin To Net: NetName=K22_SPI_CE Pin=U1-27
+Added Pin To Net: NetName=K22_AFE_RDY Pin=U1-28
+Added Pin To Net: NetName=K22_AFE_RESETZ Pin=U1-29
+Added Pin To Net: NetName=NetR4_1 Pin=U1-30
+Added Pin To Net: NetName=GND Pin=U1-31
+Added Pin To Net: NetName=DVDD Pin=U1-32
+Added Pin To Net: NetName=AVDD Pin=U1-33
+Added Pin To Net: NetName=GND Pin=U1-36
+Added Pin To Net: NetName=NetC2_2 Pin=U1-37
+Added Pin To Net: NetName=NetC1_2 Pin=U1-38
+Added Pin To Net: NetName=AVDD Pin=U1-39
+Added Pin To Net: NetName=GND Pin=U1-40
+Added Pin To Net: NetName=GND Pin=U1-41
+Change Net Name : Old Net Name=VCC New Net Name=NetC27_2
+Added Pin To Net: NetName=IN_N Pin=D1-3
+Added Pin To Net: NetName=IN_N Pin=J1-5
+Added Pin To Net: NetName=IN_N Pin=U1-1
+Added Net: Name=IN_N
+Added Pin To Net: NetName=IN_P Pin=D2-3
+Added Pin To Net: NetName=IN_P Pin=J1-9
+Added Pin To Net: NetName=IN_P Pin=U1-2
+Added Net: Name=IN_P
+Added Pin To Net: NetName=TX_N Pin=D3-3
+Added Pin To Net: NetName=TX_N Pin=J1-3
+Added Pin To Net: NetName=TX_N Pin=U1-14
+Added Net: Name=TX_N
+Added Pin To Net: NetName=TX_P Pin=D4-3
+Added Pin To Net: NetName=TX_P Pin=J1-2
+Added Pin To Net: NetName=TX_P Pin=U1-15
+Added Net: Name=TX_P
+Added Differential Pair: Name=IN
+Added Differential Pair: Name=TX
+Added Member To Class: ClassName=Acquisition_module Member=Component U1 AFE4490

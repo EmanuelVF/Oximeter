@@ -1,0 +1,22 @@
+Removed Pin From Net: NetName=GND Pin=P2-3
+Removed Pin From Net: NetName=USB_C_N Pin=R8-1
+Removed Pin From Net: NetName=USB_C_P Pin=R9-1
+Removed Pin From Net: NetName=NetR6_1 Pin=U2-64
+Removed Member From Class: ClassName=Control_module Member=P2
+Added Component: Designator=LED2(6-0805_M)
+Added Component: Designator=R10(6-0805_M)
+Added Pin To Net: NetName=GND Pin=LED2-2
+Added Pin To Net: NetName=USB_C_P Pin=R8-1
+Added Pin To Net: NetName=USB_C_N Pin=R9-1
+Added Pin To Net: NetName=NetR6_1 Pin=U2-2
+Added Pin To Net: NetName=AFE_PDN Pin=U1-20
+Added Pin To Net: NetName=AFE_PDN Pin=U2-64
+Added Net: Name=AFE_PDN
+Added Pin To Net: NetName=NetLED2_1 Pin=LED2-1
+Added Pin To Net: NetName=NetLED2_1 Pin=R10-2
+Added Net: Name=NetLED2_1
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Pin To Net: NetName=NetR10_1 Pin=U2-1
+Added Net: Name=NetR10_1
+Added Member To Class: ClassName=Control_module Member=Component LED2 LED0
+Added Member To Class: ClassName=Control_module Member=Component R10 Res1

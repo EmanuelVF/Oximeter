@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=K22_SPI_CE Pin=U2-49
+Removed Pin From Net: NetName=K22_SPI_CLK Pin=U2-50
+Removed Pin From Net: NetName=K22_SPI_MOSI Pin=U2-51
+Removed Pin From Net: NetName=K22_SPI_MISO Pin=U2-52
+Added Pin To Net: NetName=K22_SPI_CE Pin=U2-57
+Added Pin To Net: NetName=K22_SPI_CLK Pin=U2-58
+Added Pin To Net: NetName=K22_SPI_MOSI Pin=U2-59
+Added Pin To Net: NetName=K22_SPI_MISO Pin=U2-60

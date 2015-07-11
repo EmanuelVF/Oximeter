@@ -1,0 +1,264 @@
+    
+
+
+
+AFE4490Write(CONTROL1, 0x000101);
+
+/*This register configures the clock alarm pin, timer, and number of averages.
+Bits D[23:12] Must be '0'
+Bits D[11:9] CLKALMPIN[2:0]: Clocks on ALM pins
+	Internal clocks can be brought to the PD_ALM and LED_ALM pins for monitoring.
+	Note that the ALMPINCLKEN register bit must be set before using this register bit. Table 5
+	defines the settings for the two alarm pins.
+Bit D8 TIMEREN: Timer enable
+	0 = Timer module is disabled and all internal clocks are off (default after reset)
+	1 = Timer module is enabled
+Bits D[7:0] NUMAV[7:0]: Number of averages
+	Specify an 8-bit value corresponding to the number of ADC samples to be averaged – 1.
+	For example, to average four ADC samples, set NUMAV[7:0] equal to 3.
+	The maximum number of averages is 16. Any NUMAV[7:0] setting greater than or equal to a
+	decimal value of 15 results in the number of averages being set to 16.
+VER TABLA PIOLA DE LEDS
+*/
+
+AFE4490Write(CONTROL2, 0x000000);  
+/*This register controls the LED transmitter, crystal, and the AFE, transmitter, and receiver power modes.
+Bits D[23:19] Must be '0'
+Bits D[18:17] TX_REF[1:0]: Tx reference voltage
+	These bits set the transmitter reference voltage. This Tx reference voltage is available on
+	the device TX_REF pin.
+	00 = 0.75-V Tx reference voltage (default value after reset)
+	01 = 0.5-V Tx reference voltage
+	10 = 1.0-V Tx reference voltage
+	11 = 0.75-V Tx reference voltage
+	NOTE: For best results, use TX_REF = 0.5 V for 3-V operation. Use TX_REF = 0.75V and
+	TX_REF = 1.0 V for 5-V operation.
+Bit D16 RST_CLK_ON_PD_ALM: Reset clock onto PD_ALM pin
+	0 = Normal mode; no reset clock signal is connected to the PD_ALM pin
+	1 = Reset clock signal is connected to the PD_ALM pin
+Bit D15 EN_ADC_BYP: ADC bypass mode enable
+	0 = Normal mode, the internal ADC is active (default after reset)
+	1 = ADC bypass mode, the analog signal is output to the ADC_BYPP and ADC_BYPN pins
+Bits D[14:12] Must be '0'
+Bit D11 TXBRGMOD: Tx bridge mode
+	0 = LED driver is configured as an H-bridge (default after reset)
+	1 = LED driver is configured as a push-pull
+Bit D10 DIGOUT_TRISTATE: Digital output 3-state mode
+	This bit determines the state of the device digital output pins, including the clock output pin
+	and SPI output pins. In order to avoid loading the SPI bus when multiple devices are
+	connected, this bit must be set to '1' (3-state mode) whenever the device SPI is inactive.
+	0 = Normal operation (default)
+	1 = 3-state mode
+Bit D9 XTALDIS: Crystal disable mode
+	0 = The crystal module is enabled; the 8-MHz crystal must be connected to the XIN and
+	XOUT pins
+	1 = The crystal module is disabled; an external 8-MHz clock must be applied to the XIN pin
+Bit D8 EN_SLOW_DIAG: Fast diagnostics mode enable
+	0 = Fast diagnostics mode, 8 ms (default value after reset)
+	1 = Slow diagnostics mode, 16 ms
+Bits D[7:3] Must be '0'
+Bit D2 PDN_TX: Tx power-down
+	0 = The Tx is powered up (default after reset)
+	1 = Only the Tx module is powered down
+Bit D1 PDN_RX: Rx power-down
+	0 = The Rx is powered up (default after reset)
+	1 = Only the Rx module is powered down
+Bit D0 PDN_AFE: AFE power-down
+	0 = The AFE is powered up (default after reset)
+	1 = The entire AFE is powered down (including the Tx, Rx, and diagnostics blocks)
+*/
+
+AFE4490Write(PRPCOUNT, 0X001F3F);	//1F3F=7999
+/*This register sets the device pulse repetition period count.
+Bits D[23:16] Must be '0'
+Bits D[15:0] PRPCOUNT[15:0]: Pulse repetition period count
+	The contents of this register can be used to set the pulse repetition period (in number of
+	clock cycles of the 4-MHz clock). The PRPCOUNT value must be set in the range of 800 to
+	64000. Values below 800 do not allow sufficient sample time for the four samples; see the
+	Electrical Characteristics table.
+*/
+AFE4490Write(LED2STC, 0X001770); //timer control	1770=6000
+/*This register sets the start timing value for the LED2 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2STC[15:0]: Sample LED2 start count
+	The contents of this register can be used to position the start of the sample LED2 signal with
+	respect to the pulse repetition period (PRP), as specified in the PRPCOUNT register. The
+	count is specified as the number
+*/
+AFE4490Write(LED2ENDC,0X001F3E); //timer control	1F3F=7999
+/*This register sets the end timing value for the LED2 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2ENDC[15:0]: Sample LED2 end count
+	The contents of this register can be used to position the end of the sample LED2 signal with
+	respect to the PRP, as specified in the PRPCOUNT register. The count is specified as the
+	number of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED2LEDSTC,0X001770); //timer control 1770=6000
+/*This register sets the start timing value for when the LED2 signal turns on.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2LEDSTC[15:0]: LED2 start count
+	The contents of this register can be used to position the start of the LED2 with respect to the
+	PRP, as specified in the PRPCOUNT register. The count is specified as the number of 4-
+	MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED2LEDENDC,0X001F3F); //timer control 1F3F=7999
+/*This register sets the end timing value for when the LED2 signal turns off.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2LEDENDC[15:0]: LED2 end count
+	The contents of this register can be used to position the end of the LED2 signal with respect
+	to the PRP, as specified in the PRPCOUNT register. The count is specified as the number
+	of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(ALED2STC, 0X000000); //timer control
+/*This register sets the start timing value for the ambient LED2 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED2STC[15:0]: Sample ambient LED2 start count
+	The contents of this register can be used to position the start of the sample ambient LED2
+	signal with respect to the PRP, as specified in the PRPCOUNT register. The count is
+	specified as the
+*/
+AFE4490Write(ALED2ENDC, 0X0007CE); //timer control 7CE=1998
+/*This register sets the end timing value for the ambient LED2 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED2ENDC[15:0]: Sample ambient LED2 end count
+	The contents of this register can be used to position the end of the sample ambient LED2
+	signal with respect to the PRP, as specified in the PRPCOUNT register. The count is
+	specified as the number of 4-MHz clock cycles. Refer to the Using the Timer Module section
+	for details.
+*/
+AFE4490Write(LED2CONVST,0X000002); //timer control
+/*This register sets the start timing value for the LED2 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2CONVST[15:0]: LED2 convert start count
+	The contents of this register can be used to position the start of the LED2 conversion signal
+	with respect to the PRP, as specified in the PRPCOUNT register. The count is specified as
+	the number of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+    AFE4490Write(LED2CONVEND, 0X0007CF); //timer control 7CE=1999
+/*
+This register sets the end timing value for the LED2 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED2CONVEND[15:0]: LED2 convert end count
+	The contents of this register can be used to position the end of the LED2 conversion signal
+	with respect to the PRP, as specified in the PRPCOUNT register. The count is specified as
+*/
+AFE4490Write(ALED2CONVST, 0X0007D2); //timer control 7D2=2002
+/*This register sets the start timing value for the ambient LED2 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED2CONVST[15:0]: LED2 ambient convert start count
+	The contents of this register can be used to position the start of the LED2 ambient
+	conversion signal with respect to the PRP, as specified in the PRPCOUNT register. The
+	count is specified as the number of 4-MHz clock cycles. Refer to the Using the Timer
+	Module section for details.
+*/
+AFE4490Write(ALED2CONVEND,0X000F9F); //timer control	F9F=3999
+/*This register sets the end timing value for the ambient LED2 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED2CONVEND[15:0]: LED2 ambient convert end count
+	The contents of this register can be used to position the end of the LED2 ambient
+	conversion signal with respect to the PRP. The count is specified as the number of 4-MHz
+	clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED1STC, 0X0007D0); //timer control 7D0=2000
+/*This register sets the start timing value for the LED1 signal sample.
+Bits D[23:17] Must be '0'
+Bits D[16:0] LED1STC[15:0]: Sample LED1 start count
+	The contents of this register can be used to position the start of the sample LED1 signal with
+	respect to the PRP, as specified in the PRPCOUNT register. The count is specified as the
+*/
+AFE4490Write(LED1ENDC, 0X000F9E); //timer control	F9E=3998
+/*This register sets the end timing value for the LED1 signal sample.
+Bits D[23:17] Must be '0'
+Bits D[16:0] LED1ENDC[15:0]: Sample LED1 end count
+	The contents of this register can be used to position the end of the sample LED1 signal with
+	respect to the PRP, as specified in the PRPCOUNT register. The count is specified as the
+	number of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED1LEDSTC, 0X0007D0); //timer control	7D0=2000
+/*This register sets the start timing value for when the LED1 signal turns on.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED1LEDSTC[15:0]: LED1 start count
+	The contents of this register can be used to position the start of the LED1 signal with respect
+	to the PRP, as specified in the PRPCOUNT register. The count is specified as the number
+	of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED1LEDENDC, 0X000F9F); //timer control	F9F=3999
+/*This register sets the end timing value for when the LED1 signal turns off.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED1LEDENDC[15:0]: LED1 end count
+	The contents of this register can be used to position the end of the LED1 signal with respect
+	to the PRP, as specified in the PRPCOUNT register. The count is specified as the number
+	of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(ALED1STC, 0X000FA0); //timer control		FA0=4000
+/*This register sets the start timing value for the ambient LED1 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED1STC[15:0]: Sample ambient LED1 start count
+	The contents of this register can be used to position the start of the sample ambient LED1
+	signal with respect to the PRP, as specified in the PRPCOUNT register. The count is
+	specified as the
+*/
+AFE4490Write(ALED1ENDC, 0X00176E); //timer control	176E=5998
+/*This register sets the end timing value for the ambient LED1 signal sample.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED1ENDC[15:0]: Sample ambient LED1 end count
+	The contents of this register can be used to position the end of the sample ambient LED1
+	signal with respect to the PRP, as specified in the PRPCOUNT register. The count is
+	specified as the
+*/
+AFE4490Write(LED1CONVST, 0X000FA2); //timer control		FA2=4002
+/*This register sets the start timing value for the LED1 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED1CONVST[15:0]: LED1 convert start count
+	The contents of this register can be used to position the start of the LED1 conversion signal
+	with respect to the PRP, as specified in the PRPCOUNT register. The count is specified as
+	the number of 4-MHz clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(LED1CONVEND, 0X00176F); //timer control	176E=5999
+/*This register sets the end timing value for the LED1 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] LED1CONVEND[15:0]: LED1 convert end count
+	The contents of this register can be used to position the end of the LED1 conversion signal
+	with respect to the PRP. The count is specified as the number of 4-MHz clock cycles. Refer
+	to the Using the Timer Module section for details.
+*/
+AFE4490Write(ALED1CONVST, 0X001772); //timer control		1772=6002
+/*This register sets the start timing value for the ambient LED1 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED1CONVST[15:0]: LED1 ambient convert start count
+	The contents of this register can be used to position the start of the LED1 ambient
+	conversion signal with respect to the PRP, as specified in the PRPCOUNT register. The
+	count is specified as the number of 4-MHz clock cycles. Refer to the Using the Timer
+	Module section for details.
+*/
+AFE4490Write(ALED1CONVEND, 0X001F3F); //timer control 1F3F=7999
+/*This register sets the end timing value for the ambient LED1 conversion.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ALED1CONVEND[15:0]: LED1 ambient convert end count
+	The contents of this register can be used to position the end of the LED1 ambient
+	conversion signal with respect to the PRP. The count is specified as the number of 4-MHz
+	clock cycles. Refer to the Using the Timer Module section for details.
+*/
+AFE4490Write(ADCRSTCNT0, 0X000000); //timer control
+/*This register sets the start position of the ADC0 reset conversion signal.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ADCRSTSTCT0[15:0]: ADC RESET 0 start count
+	The contents of this register can be used to position the start of the ADC reset conversion
+	signal (default value after reset is 0000h). Refer to the Using the Timer Module section for
+	details.
+*/
+AFE4490Write(ADCRSTENDCT0,0X000000); //timer control
+/*This register sets the end position of the ADC0 reset conversion signal.
+Bits D[23:16] Must be '0'
+Bits D[15:0] ADCRSTENDCT0[15:0]: ADC RESET 0 end count
+	The contents of this register can be used to position the end of the ADC reset conversion
+	signal (default value after reset is 0000h). Refer to the Using the Timer Module section for
+	details.
+*/
+    AFE4490Write(ADCRSTCNT1, 0X0007D0); //timer control 7D0=2000
+    AFE4490Write(ADCRSTENDCT1, 0X0007D0); //timer control 
+    AFE4490Write(ADCRSTCNT2, 0X000FA0); //timer control		0X000FA0=4000
+    AFE4490Write(ADCRSTENDCT2, 0X000FA0); //timer control
+    AFE4490Write(ADCRSTCNT3, 0X001770); //timer control	1770=7000
+    AFE4490Write(ADCRSTENDCT3, 0X001770);
+

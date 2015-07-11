@@ -1,0 +1,10 @@
+Comprar
+	2 x Cristales SMD 8Mhz
+	30 x cap SMD 1uf 0805
+	15 x Cap SMD 10nf 0805
+	15 x Cap SMD 100nf 0805
+	5 x Cap SMD 22pf 0805	
+	DB9 hembra ->placa
+	DB9 Macho -> Cable
+	header 5x2 1.27 mm
+	

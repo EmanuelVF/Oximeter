@@ -1,0 +1,8 @@
+Removed Pin From Net: NetName=DVDD Pin=P1-1
+Change Component Footprint: Designator=U2 Old Footprint=TQFP64_M New Footprint=MK22FN512_TSQFP50P1200X1200X160-64N
+Added Component: Designator=P2(HDR1X2)
+Added Pin To Net: NetName=DVDD Pin=P2-1
+Added Pin To Net: NetName=NetP1_1 Pin=P1-1
+Added Pin To Net: NetName=NetP1_1 Pin=P2-2
+Added Net: Name=NetP1_1
+Added Member To Class: ClassName=Control_module Member=Component P2 Jumper VDD Prog

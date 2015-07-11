@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=DVDD Pin=P2-1
+Removed Pin From Net: NetName=GND Pin=P2-4
+Removed Pin From Net: NetName=NetP2_2 Pin=U2-2
+Change Component DesignItemId : Designator=P2 Old DesignItemId=Header 4 New DesignItemId=Header 3
+Change Component Footprint: Designator=P2 Old Footprint=HDR1X4 New Footprint=HDR1X3
+Added Pin To Net: NetName=GND Pin=P2-3
+Added Pin To Net: NetName=NetP2_2 Pin=U2-1
+Added Pin To Net: NetName=NetP2_1 Pin=P2-1
+Added Pin To Net: NetName=NetP2_1 Pin=U2-2
+Added Net: Name=NetP2_1

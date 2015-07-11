@@ -1,0 +1,9 @@
+Added Component: Designator=J1(DB9)
+Added Pin To Net: NetName=TX_P Pin=J1-2
+Added Pin To Net: NetName=TX_N Pin=J1-3
+Added Pin To Net: NetName=IN_N Pin=J1-5
+Added Pin To Net: NetName=GND Pin=J1-7
+Added Pin To Net: NetName=IN_P Pin=J1-9
+Added Pin To Net: NetName=GND Pin=J1-10
+Added Pin To Net: NetName=GND Pin=J1-11
+Added Member To Class: ClassName=Acquisition_module Member=Component J1 DB9
